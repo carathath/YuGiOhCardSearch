@@ -1,0 +1,396 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Yu-Gi-Oh Card Search</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <form>
+      <div class="container" id="card-settings">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-4 col-sm-12">
+            <p class="card-settings-item"><b class="card-label">Card Type:</b>
+              <select id="card-type" onclick="displayDiv()" class="checkbox-label">
+                <option value="random" class="checkbox-label">Random</option>
+                <option value="monster" class="checkbox-label">Monster</option>
+                <option value="spell" class="checkbox-label">Spell</option>
+                <option value="trap" class="checkbox-label">Trap</option>
+              </select>
+            </p>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            <p class="card-settings-item"><b class="card-label">Card Name(s):</b>
+              <select id="card-name-syntax" onclick="disableInput()" class="checkbox-label">
+                <option value="any" class="checkbox-label">---Any---</option>
+                <option value="exact" class="checkbox-label">Exactly</option>
+                <option value="like" class="checkbox-label">Like</option>
+              </select>
+              <input type="text" placeholder="Ex. Dark Magician|Blue-Eyes White Dragon" id="card-name" class="checkbox-label">
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--If a Monster Card-->
+      <div id="monster-div" class="container">
+
+        <div id="mons-lvl-div">
+          <label for="monster-lvl"><b class="card-label">Card Level:</b></label>
+          <select id="monster-lvl" name="monster-level" class="checkbox-label">
+            <option value="0" class="checkbox-label">--Any--</option>
+            <option value="level=1" class="checkbox-label">1</option>
+            <option value="level=2" class="checkbox-label">2</option>
+            <option value="level=3" class="checkbox-label">3</option>
+            <option value="level=4" class="checkbox-label">4</option>
+            <option value="level=5" class="checkbox-label">5</option>
+            <option value="level=6" class="checkbox-label">6</option>
+            <option value="level=7" class="checkbox-label">7</option>
+            <option value="level=8" class="checkbox-label">8</option>
+            <option value="level=9" class="checkbox-label">9</option>
+            <option value="level=10" class="checkbox-label">10</option>
+            <option value="level=11" class="checkbox-label">11</option>
+            <option value="level=12" class="checkbox-label">12</option>
+          </select>
+        </div>
+
+        <div class="container card-type-div bot-border" id="card-type-div">
+
+          <p class="p-margin"><b class="card-label">Monster Type:</b></p>
+          <input type="checkbox" id="mons-type-0" value="" onclick="disableCheckbox('1')">
+          <label for="mons-type-0" class="checkbox-label">Any</label>
+
+          <div class="row row-cols-auto justify-content-center align-items-center">
+            <div class="col">
+              <input type="checkbox" id="mons-type-1" value="Normal Monster">
+              <label for="mons-type-1" class="checkbox-label">Normal</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-2" value="Effect Monster">
+              <label for="mons-type-2" class="checkbox-label">Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-3" value="Fusion Monster">
+              <label for="mons-type-3" class="checkbox-label">Fusion</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-4" value="Synchro Monster">
+              <label for="mons-type-4" class="checkbox-label">Synchro</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-5" value="XYZ Monster">
+              <label for="mons-type-5" class="checkbox-label">XYZ</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-6" value="Ritual Monster">
+              <label for="mons-type-6" class="checkbox-label">Ritual</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-7" value="Tuner Monster">
+              <label for="mons-type-7" class="checkbox-label">Tuner</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-8" value="Gemini Monster">
+              <label for="mons-type-8" class="checkbox-label">Gemini</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-9" value="Toon Monster">
+              <label for="mons-type-9" class="checkbox-label">Toon</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-10" value="Spirit Monster">
+              <label for="mons-type-10" class="checkbox-label">Spirit</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-11" value="Union Effect Monster">
+              <label for="mons-type-11" class="checkbox-label">Union Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-12" value="Link Monster">
+              <label for="mons-type-12" class="checkbox-label">Link</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-13" value="Flip Effect Monster">
+              <label for="mons-type-13" class="checkbox-label">Flip Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-14" value="Flip Tuner Effect Monster">
+              <label for="mons-type-14" class="checkbox-label">Flip Tuner Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-15" value="Normal Tuner Monster">
+              <label for="mons-type-15" class="checkbox-label">Normal Tuner</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-16" value="Synchro Tuner Monster">
+              <label for="mons-type-16" class="checkbox-label">Synchro Tuner</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-17" value="Pendulum Effect Monster">
+              <label for="mons-type-17" class="checkbox-label">Pendulum Effect Monster</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-18" value="Pendulum Tuner Effect Monster">
+              <label for="mons-type-18" class="checkbox-label">Pendulum Tuner Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-19" value="Pendulum Flip Effect Monster">
+              <label for="mons-type-19" class="checkbox-label">Pendulum Flip Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-20" value="Pendulum Effect Fusion Monster">
+              <label for="mons-type-20" class="checkbox-label">Pendulum Effect Fusion</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-21" value="Pendulum Normal Monster">
+              <label for="mons-type-21" class="checkbox-label">Pendulum Normal</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-22" value="XYZ Pendulum Effect Monster">
+              <label for="mons-type-22" class="checkbox-label">XYZ Pendulum Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-23" value="Synchro Pendulum Effect Monster">
+              <label for="mons-type-23" class="checkbox-label">Synchro Pendulum Effect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-type-24" value="Ritual Effect Monster">
+              <label for="mons-type-24" class="checkbox-label">Ritual Effect</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mons-type-div bot-border">
+          <p class="p-margin"><b class="card-label">Monster Race:</b></p>
+          <input type="checkbox" id="mons-race-0" value="" onclick="disableCheckbox('2')">
+          <label for="mons-race-0" class="checkbox-label">Any</label>
+
+          <div class="row row-cols-auto justify-content-center align-items-center">
+            <div class="col">
+              <input type="checkbox" id="mons-race-1" value="Aqua">
+              <label for="mons-race-1" class="checkbox-label">Aqua</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-2" value="Beast">
+              <label for="mons-race-2" class="checkbox-label">Beast</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-3" value="Beast-Warrior">
+              <label for="mons-race-3" class="checkbox-label">Beast-Warrior</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-4" value="Creator-God">
+              <label for="mons-race-4" class="checkbox-label">Creator-God</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-5" value="Cyberse">
+              <label for="mons-race-5" class="checkbox-label">Cyberse</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-6" value="Dinosaur">
+              <label for="mons-race-6" class="checkbox-label">Dinosaur</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-7" value="Divine-Beast">
+              <label for="mons-race-7" class="checkbox-label">Divine-Beast</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-8" value="Dragon">
+              <label for="mons-race-8" class="checkbox-label">Dragon</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-9" value="Fairy">
+              <label for="mons-race-9" class="checkbox-label">Fairy</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-10" value="Fiend">
+              <label for="mons-race-10" class="checkbox-label">Fiend</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-11" value="Fish">
+              <label for="mons-race-11" class="checkbox-label">Fish</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-12" value="Insect">
+              <label for="mons-race-12" class="checkbox-label">Insect</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-13" value="Machine">
+              <label for="mons-race-13" class="checkbox-label">Machine</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-14" value="Plant">
+              <label for="mons-race-14" class="checkbox-label">Plant</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-15" value="Psychic">
+              <label for="mons-race-15" class="checkbox-label">Psychic</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-16" value="Pyro">
+              <label for="mons-race-16" class="checkbox-label">Pyro</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-17" value="Reptile">
+              <label for="mons-race-17" class="checkbox-label">Reptile</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-18" value="Rock">
+              <label for="mons-race-18" class="checkbox-label">Rock</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-19" value="Sea Serpent">
+              <label for="mons-race-19" class="checkbox-label">Sea Serpent</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-20" value="Spellcaster">
+              <label for="mons-race-20" class="checkbox-label">Spellcaster</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-21" value="Thunder">
+              <label for="mons-race-21" class="checkbox-label">Thunder</label>
+            </div>
+            <div>
+              <input type="checkbox" id="mons-race-22" value="Warrior">
+              <label for="mons-race-22" class="checkbox-label">Warrior</label>
+            </div>
+            <div class="col">
+              <input type="checkbox" id="mons-race-23" value="Winged Beast">
+              <label for="mons-race-23" class="checkbox-label">Winged Beast</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="container mons-attr-div">
+          <p class="p-margin"><b class="card-label">Monster Attribute:</b></p>
+          <input type="checkbox" id="mons-attr-0" value="" onclick="disableCheckbox('3')">
+          <label for="mons-attr-0" class="checkbox-label">Any</label>
+
+          <div class="row row-cols-auto justify-content-center align-items-center">
+             <div class="col">
+               <input type="checkbox" id="mons-attr-1" value="DARK">
+               <label for="mons-attr-1" class="checkbox-label">Dark</label>
+             </div>
+             <div class="col">
+                <input type="checkbox" id="mons-attr-2" value="DIVINE">
+                <label for="mons-attr-2" class="checkbox-label">Divine</label>
+             </div>
+             <div class="col">
+               <input type="checkbox" id="mons-attr-3" value="EARTH">
+               <label for="mons-attr-3" class="checkbox-label">Earth</label>
+             </div>
+             <div class="col">
+               <input type="checkbox" id="mons-attr-4" value="FIRE">
+               <label for="mons-attr-4" class="checkbox-label">Fire</label>
+             </div>
+             <div class="col">
+               <input type="checkbox" id="mons-attr-5" value="LIGHT">
+               <label for="mons-attr-5" class="checkbox-label">Light</label>
+             </div>
+             <div class="col">
+               <input type="checkbox" id="mons-attr-6" value="WATER">
+               <label for="mons-attr-6" class="checkbox-label">Water</label>
+             </div>
+             <div class="col">
+               <input type="checkbox" id="mons-attr-7" value="WIND">
+               <label for="mons-attr-7" class="checkbox-label">Wind</label>
+             </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!--If a Spell Card-->
+      <div id="spell-div" class="container">
+        <p class="p-margin"><b class="card-label">Spell Type:</b></p>
+        <input type="checkbox" id="spell-race-0" value="" onclick="disableCheckbox('4')">
+        <label for="spell-race-0" class="checkbox-label">Any</label>
+
+        <div class="row row-cols-auto justify-content-center align-items-center">
+          <div class="col">
+            <input type="checkbox" id="spell-race-1" value="Normal">
+            <label for="spell-race-1" class="checkbox-label">Normal</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="spell-race-2" value="Field">
+            <label for="spell-race-2" class="checkbox-label">Field</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="spell-race-3" value="Equip">
+            <label for="spell-race-3" class="checkbox-label">Equip</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="spell-race-4" value="Continuous">
+            <label for="spell-race-4" class="checkbox-label">Continuous</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="spell-race-5" value="Quick-Play">
+            <label for="spell-race-5" class="checkbox-label">Quick-Play</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="spell-race-6" value="Ritual">
+            <label for="spell-race-6" class="checkbox-label">Ritual</label>
+          </div>
+        </div>
+      </div>
+
+      <!--If a Trap Card-->
+      <div id="trap-div" class="container">
+        <p class="p-margin"><b class="card-label">Trap Type:</b></p>
+        <input type="checkbox" id="trap-race-0" value="" onclick="disableCheckbox('5')">
+        <label for="trap-race-0" class="checkbox-label">Any</label>
+
+        <div class="row row-cols-auto justify-content-center align-items-center">
+          <div class="col">
+            <input type="checkbox" id="trap-race-1" value="Normal">
+            <label for="trap-race-1" class="checkbox-label">Normal</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="trap-race-2" value="Continuous">
+            <label for="trap-race-2" class="checkbox-label">Continuous</label>
+          </div>
+          <div class="col">
+            <input type="checkbox" id="trap-race-3" value="Counter">
+            <label for="trap-race-3" class="checkbox-label">Counter</label>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="container" id="search-button-div">
+      <div class="row row-cols-auto justify-content-center align-items-center">
+        <span class="button-span">
+          <button id="but" class="search-button" onclick='button_click()'>Search</button>
+        </span>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div id="card-display" class="row row-cols-auto justify-content-center align-items-center">
+
+      </div>
+    </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="img/millpuzzle_resize.png" class="buttImage"></button>
+    
+
+    <footer>
+      <a href="https://db.ygoprodeck.com/api-guide/" target="_blank">Link to API site</a>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

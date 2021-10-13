@@ -1,0 +1,236 @@
+body{
+    background: url("../img/back3.JPG");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/******** https://www.w3schools.com/howto/howto_js_scroll_to_top.asp ********/
+/* With some changes */
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 40px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: solid; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgba(151,146,144, 1); /* Set a background color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 5px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-size: 10px; /* Increase font size */
+}
+  
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+/**************************************************************************/
+
+.buttImage{ /* The back to top button image */
+    width: 35px;
+    height: 35px;
+}
+
+select, input{ /*Card type and Card Name inputs*/
+    border-radius: 5px;
+}
+
+#card-settings{ /* Div holding Card Type and Card Name */
+    margin-top: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.card-settings-item{ /* Targets Card Type and Card Name elements */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.bot-border{ /* Targets Monster Type and Monster Race divs */
+    border-bottom-style: solid;
+    padding-bottom: 5px;
+}
+
+#monster-div{ /* Monster Card div */
+    margin-top: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(148,114,88,0.8);
+}
+
+#spell-div{ /* Spell Card div */
+    margin-top: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(0,181,136,0.8);
+}
+
+#trap-div{ /* Trap Card div */
+    margin-top: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(222,0,147,0.8);
+}
+
+.p-margin{ /* Removes the bottom margin for the headings */
+    margin-bottom: 0px;
+}
+
+.card-label, #but{ /* Font for headings and Search button text */
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 25px;
+}
+
+.checkbox-label{ /* Checkbox text fonts */
+    font-family: 'Crimson Pro', serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#search-button-div{ /* Targets Search button */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.button-span{ /* Adds background to the Search button */
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px 5px 5px 5px;
+    border-radius: 5%;
+}
+
+.search-button{ /* Targets Search button */
+    color: red;
+    background-color: cornflowerblue;
+    border-style: solid;
+    border-color: slategray;
+    border-radius: 10%;
+}
+
+.search-button:hover{ /* Searcg button hover color change */
+    color: gold;
+    background-color: blue;
+    border-color: white;
+}
+
+#card-display{ /* Used to give the last card row space from the footer */
+    margin-bottom: 25px;
+}
+
+.cardcol:hover{ /* Changes the cursor to a star level picture on card hover */
+    cursor: url('../img/starlevelv3_resize.png'), auto;
+}
+
+.cardimg{ /* Size of searched card image(s) */
+    width: 175px;
+    height: 250px;
+    margin-bottom: 5px;
+}
+
+.specific{ /* Adds margin to the divs in card.html */
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.specificBackgroundColor{ /* Used to add background color to the divs in card.html */
+    background-color: rgba(255,255,255,0.8);
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.cardname{ /* Font for the individual card name */
+    font-family: 'PT Serif', serif;
+    font-weight: bold;
+    margin-bottom: 0px; /* Removes the margin from the bottom of the card name */
+    text-align: center;
+}
+
+#cardinfo{ /* Adds margin to the bottom of the card information div */
+    margin-bottom: 5px;
+}
+
+#cardinfo p{ /* Removes the bottom margin for the text in card information div */
+    margin-bottom: 0px;
+}
+
+pre{ /* Used to wrap text in the card description div */
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+#card-description{ /* Adds margin to the card description div */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.carddescription{ /* Text font for text inside the card description div */
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 0px;
+}
+
+.idvimg{ /* Image size when displaying only one image */
+    width: 25%;
+    margin-top: 5px;
+}
+
+.carouselimg{ /* Size of images inside the image carousel */
+    width: 30%;
+    margin: auto;
+}
+
+footer{ /* For the footer */
+    margin-top: 5px;
+    padding-left: 5px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(255,255,255,0.8);
+}
+
+@media only screen and (max-width: 600px){
+    body{ /* Change background image on mobile devices */
+        background: url('../img/mediabck2.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    
+    .cardimg{ /* Decrease size of searched card image(s) */
+        width: 60px;
+        height: 75px;
+    }
+
+    #myBtn{ /* Decrease the size of the Search button */
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .buttImage{ /* Decrease the size of the back to top image */
+        width: 20px;
+        height: 20px;
+    }
+
+    .idvimg{ /* Decrease size of individual card */
+        width: 60%;
+    }
+
+    .carouselimg{ /* Increase size of images inside the carousel */
+        width: 70%;
+    }
+
+    .card-label{ /* Change font size of headings in index.html */
+        font-size: 20px;
+    }
+
+    .checkbox-label{ /* Change font size of checkbox text */
+        font-size: 15px;
+    }
+}
